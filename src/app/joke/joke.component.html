@@ -1,0 +1,13 @@
+<div class="joke-container">
+  <h1>Here's a Joke for You:</h1>
+  <p *ngIf="joke.type === 'twopart'">
+    <strong>Setup:</strong> {{ joke.setup }}
+  </p>
+  <p *ngIf="joke.type === 'twopart'">
+    <strong>Punchline:</strong> {{ joke.delivery }}
+  </p>
+  <p *ngIf="joke.type === 'single'">
+    <strong>Joke:</strong> {{ joke.joke }}
+  </p>
+  <button (click)="fetchNewJoke()">Get Another Joke</button>
+</div>

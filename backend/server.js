@@ -1,15 +1,15 @@
-import app from "./app.js";
-import http from "http";
-import createDebug from "debug";
+import app from './app.js';
+import http from 'http';
+import createDebug from 'debug';
 
-const debug = createDebug("node-ng");
+const debug = createDebug('node-ng');
 
-const normalizePort = (val) => {
+const normalizePort = val => {
   const port = parseInt(val, 10);
-  return isNaN(port) ? val : port >= 0 ? port : false;
-};
+  return isNaN(port) ? val: port >= 0 ? port : false;
+}
 
-const onError = (err) => {
+const onError = err => {
   if (err.syscall !== "listen") {
     throw err;
   }
@@ -24,7 +24,7 @@ const onError = (err) => {
     default:
       throw err;
   }
-};
+}
 
 const onListening = () => {
   const addr = server.address();

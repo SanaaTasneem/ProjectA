@@ -1,36 +1,13 @@
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-.footer {
-  text-align: center;
-  padding: 1em;
-  background-color: #333;
-  color: white;
-  width: 100%;
-  bottom: 0;
+mat-toolbar {
   position: fixed;
-  margin-top: auto;
+  bottom: 0;            /* sets it to the bottom */
+  width: 100%;
+  display: flex;         /* Use flexbox for centering */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center;     /* Vertically center if needed */
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-li {
-  margin-right: 15px;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-.spacer {
-  flex: 1 1 auto;
+.mat-caption {
+  text-align: center;
 }
