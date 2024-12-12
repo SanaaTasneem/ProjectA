@@ -1,3 +1,4 @@
+
 import express from 'express';
 import Post from '../model/post.js'
 import checkAuth from "../middleware/check-auth.js";

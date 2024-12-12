@@ -46,8 +46,7 @@ export class PostService {
 
     this.http.post<{ success: boolean, postId: string }>('http://localhost:3000/api/posts', post)
       .subscribe((res) => {
-        const postId = res.postId;
-        post.id = postId;
+        post.id = res.postId;
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
         this.router.navigate(['/']);
@@ -56,9 +55,9 @@ export class PostService {
 
   updatePost(id: string, title: string, content: string) {
     const post: Post = {id: id, title: title, content: content};
-    this.http.put<{ success: boolean }>('http://localhost:3000/api/posts/' + id, post).subscribe(res => {
+    this.http.put<{ success: boolean }>('http://localhost:3000/api/posts/' + id, post).subscribe(() => {
       const updatedPost = [...this.posts];
-      const oldPostIndex = updatedPost.findIndex(p => p.id === post.id);
+      updatedPost.findIndex(p => p.id === post.id);
       this.posts = updatedPost;
       this.postUpdated.next([...this.posts]);
       this.router.navigate(['/']);

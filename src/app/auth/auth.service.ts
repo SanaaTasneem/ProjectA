@@ -10,7 +10,9 @@ export class AuthService {
   private isAuthenticated: boolean = false;
   private authStatusListener = new Subject<boolean>();
   private token: string | null = null;
-  private tokenTimer: ReturnType<typeof setTimeout> = 0; // adding this so we don't rely on NodeJS Timer TypeSettings
+  private tokenTimer: ReturnType<typeof setTimeout> | null = null;
+
+  // Allowing null values for initialization
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -58,9 +60,11 @@ export class AuthService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
-    clearTimeout(this.tokenTimer);
+    if (this.tokenTimer) {
+      clearTimeout(this.tokenTimer);
+    }
     this.clearAuthData();
-    this.router.navigate(['/']);
+    this.router.navigate(['/'])
   }
 
   autoAuthUser() {
@@ -100,8 +104,7 @@ export class AuthService {
 
     if (!token || !expirationDate) {
       return;
-    }
-    return {
+    }return {
       token: token,
       expirationDate: new Date(expirationDate)  // we have to turn it back into a Date type b/c it is serialized in local storage
     }
